@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import { DataManager, ODataV4Adaptor } from '@syncfusion/ej2-data';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const api = axios.create({
+	BaseURL : `http://localhost:5000/api/posts/`
+})
+
+class App extends React.Component,ODataV4Adaptor {
+	state = {
+		post : []
+	}
+	constructor() {
+		super(...arguments);
+		this.dataManager = new DataManager({
+			url: 'https://ej2services.syncfusion.com/production/web-services/api/Schedule',
+			adaptor: new ODataV4Adaptor
+		});
+	}
+	
+	render() {
+		return <div> </div>
+	}
 }
-
 export default App;
